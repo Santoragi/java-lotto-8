@@ -16,4 +16,12 @@ public class NumberParser {
             throw new IllegalArgumentException("당첨 번호는 정수를 쉼표(,)로 구분하여 입력해야 합니다.");
         }
     }
+
+    public Integer parseNumber(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("보너스 번호는 정수로 입력해야 합니다.");
+        }
+    }
 }
