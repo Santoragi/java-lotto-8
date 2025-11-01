@@ -1,4 +1,4 @@
-package lotto.parser;
+package lotto.util.parser;
 
 public class PriceParser {
 

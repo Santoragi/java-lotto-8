@@ -1,4 +1,4 @@
-package lotto.validator;
+package lotto.util.validator;
 
 import static lotto.constant.LottoConstants.LOTTO_PRICE;
 
