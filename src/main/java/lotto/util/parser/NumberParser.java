@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class NumberParser {
 
-    public List<Integer> parse(String input) {
+    public List<Integer> parseNumbers(String input) {
         try {
             return Arrays.stream(input.split(","))
                     .map(String::trim)

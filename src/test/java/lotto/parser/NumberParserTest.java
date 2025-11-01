@@ -26,7 +26,7 @@ public class NumberParserTest {
 
         String input = "1,2,3,4,5,6";
 
-        List<Integer> numbers = numberParser.parse(input);
+        List<Integer> numbers = numberParser.parseNumbers(input);
 
         assertEquals(LOTTO_NUMBER_COUNT, numbers.size());
         assertEquals(List.of(1,2,3,4,5,6), numbers);
@@ -38,7 +38,7 @@ public class NumberParserTest {
 
         String input = "1,2,삼,4,5,6";
 
-        assertThatThrownBy(() -> numberParser.parse(input))
+        assertThatThrownBy(() -> numberParser.parseNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("당첨 번호는 정수를 쉼표(,)로 구분하여 입력해야 합니다.");
     }
