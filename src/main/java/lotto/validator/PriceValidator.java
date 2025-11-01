@@ -14,20 +14,20 @@ public class PriceValidator {
 
     private void validateMinPrice(int price) {
         if(price < MIN_PRICE) {
-            throw new IllegalArgumentException("최소 구입 금액은 " + MIN_PRICE + "입니다.");
+            throw new IllegalArgumentException("최소 구입 금액은 1000원입니다.");
 
         }
     }
 
     private void validateMaxPrice(int price) {
         if(price > MAX_PRICE) {
-            throw new IllegalArgumentException("로또는 최대 " + MAX_PRICE + "만원까지 구매 가능합니다.");
+            throw new IllegalArgumentException("로또는 최대 10만원까지 구매 가능합니다.");
         }
     }
 
     private void validateDivisibleByLottoPrice(int price) {
         if(price % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("구매 금액은 로또 한 장의 가격(" + LOTTO_PRICE + "원)으로 나누어 떨어져야합니다.");
+            throw new IllegalArgumentException("구매 금액은 로또 한 장의 가격(1000원)으로 나누어 떨어져야합니다.");
         }
     }
 }
