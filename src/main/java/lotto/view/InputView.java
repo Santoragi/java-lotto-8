@@ -4,4 +4,5 @@ public interface InputView {
 
     String getPrice();
     String getWinningNumbers();
+    String getBonusNumber();
 }
