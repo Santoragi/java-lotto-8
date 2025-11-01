@@ -1,8 +1,9 @@
 package lotto.validator;
 
+import static lotto.constant.LottoConstants.LOTTO_PRICE;
+
 public class PriceValidator {
 
-    private static final int LOTTO_PRICE = 1000;
     private static final int MIN_PRICE = 1000;
     private static final int MAX_PRICE = 100000;
 
