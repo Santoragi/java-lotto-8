@@ -62,6 +62,17 @@ public class LottoServiceImpl implements LottoService {
         return lottoResult;
     }
 
+    @Override
+    public float calculateRateOfReturn(List<LottoRank> lottoResult, int price) {
+        int totalPrize = lottoResult.stream()
+                .mapToInt(LottoRank::getPrize)
+                .sum();
+
+        float rate = (float) (totalPrize / price) * 100f;
+        return Math.round(rate * 100f) / 100f;
+    }
+
+
     private int getMatchCount(Lotto lotto, List<Integer> winningNumbers) {
         List<Integer> numbers = lotto.getNumbers();
 
