@@ -1,6 +1,11 @@
 package lotto.domain;
 
+import static lotto.constant.LottoConstants.NUMBER_DELIMETER;
+import static lotto.constant.LottoConstants.NUMBER_PREFIX;
+import static lotto.constant.LottoConstants.NUMBER_SUFFIX;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -16,5 +21,10 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public String toString() {
+        return numbers.stream()
+                .sorted()
+                .map(String::valueOf)
+                .collect(Collectors.joining(NUMBER_DELIMETER, NUMBER_PREFIX, NUMBER_SUFFIX));
+    }
 }
