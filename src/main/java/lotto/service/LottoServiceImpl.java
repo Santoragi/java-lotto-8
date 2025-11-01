@@ -68,7 +68,7 @@ public class LottoServiceImpl implements LottoService {
                 .mapToInt(LottoRank::getPrize)
                 .sum();
 
-        float rate = (float) (totalPrize / price) * 100f;
+        float rate = ((float) totalPrize / price) * 100f;
         return Math.round(rate * 100f) / 100f;
     }
 

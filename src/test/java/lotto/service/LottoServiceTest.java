@@ -100,4 +100,13 @@ public class LottoServiceTest {
         List<LottoRank> lottoResult = List.of(LottoRank.FIFTH);
         assertThat(lottoService.matchLottos(lottos, winningNumbers, bonusNumber)).isEqualTo(lottoResult);
     }
+
+    @Test
+    @DisplayName("로또 수익률을 올바르게 계산")
+    void 로또_수익률_계산() {
+        List<LottoRank> lottoResult = List.of(LottoRank.FIFTH);
+        int price = 8000;
+
+        assertThat(lottoService.calculateRateOfReturn(lottoResult, price)).isEqualTo(62.5f);
+    }
 }
