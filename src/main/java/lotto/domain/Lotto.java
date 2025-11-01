@@ -27,4 +27,8 @@ public class Lotto {
                 .map(String::valueOf)
                 .collect(Collectors.joining(NUMBER_DELIMETER, NUMBER_PREFIX, NUMBER_SUFFIX));
     }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
