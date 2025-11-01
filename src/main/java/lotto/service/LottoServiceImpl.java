@@ -1,6 +1,8 @@
 package lotto.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import lotto.constant.LottoRank;
 import lotto.domain.Lotto;
 import lotto.util.LottoCountCalculator;
 import lotto.util.LottoGenerator;
@@ -42,5 +44,54 @@ public class LottoServiceImpl implements LottoService {
         });
 
         return lottos;
+    }
+
+    @Override
+    public List<LottoRank> matchLottos(List<Lotto> lottos, List<Integer> winningNumbers, Integer bonusNumber) {
+        lottos.forEach(lotto -> numberValidator.validate(lotto.getNumbers()));
+        numberValidator.validate(winningNumbers);
+        bonusNumberValidator.validate(winningNumbers, bonusNumber);
+
+        List<LottoRank> lottoResult = new ArrayList<>();
+        for(Lotto lotto : lottos) {
+            int matchCount = getMatchCount(lotto, winningNumbers);
+            boolean matchBonus = isBonusMatched(lotto, bonusNumber);
+            addLottoRank(lottoResult, matchCount, matchBonus);
+        }
+
+        return lottoResult;
+    }
+
+    private int getMatchCount(Lotto lotto, List<Integer> winningNumbers) {
+        List<Integer> numbers = lotto.getNumbers();
+
+        return (int) numbers.stream()
+                .filter(winningNumbers::contains)
+                .count();
+
+    }
+
+    private boolean isBonusMatched(Lotto lotto, Integer bonusNumber) {
+        List<Integer> numbers = lotto.getNumbers();
+
+        return numbers.contains(bonusNumber);
+    }
+
+    private void addLottoRank(List<LottoRank> lottoResult, int matchCount, boolean matchBonus) {
+        if(matchCount == 6) {
+            lottoResult.add(LottoRank.FIRST);
+        }
+        if(matchCount == 5 && matchBonus) {
+            lottoResult.add(LottoRank.SECOND);
+        }
+        if(matchCount == 5 && !matchBonus) {
+            lottoResult.add(LottoRank.THIRD);
+        }
+        if(matchCount == 4) {
+            lottoResult.add(LottoRank.FOURTH);
+        }
+        if(matchCount == 3) {
+            lottoResult.add(LottoRank.FIFTH);
+        }
     }
 }
