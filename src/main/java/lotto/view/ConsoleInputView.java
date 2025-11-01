@@ -4,12 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleInputView implements InputView {
 
-    @Override
-    public int getPrice() {
-        String input = Console.readLine();
-        //TODO: 구입 금액 검증 로직
-        int price = Integer.parseInt(input);
+    private static final String PRICE_MESSAGE = "구입금액을 입력해 주세요.";
 
-        return price;
+    @Override
+    public String getPrice() {
+        System.out.println(PRICE_MESSAGE);
+        return Console.readLine();
     }
 }
