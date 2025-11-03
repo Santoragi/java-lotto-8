@@ -3,7 +3,9 @@ package lotto.service;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import lotto.constant.LottoRank;
 import lotto.domain.Lotto;
 import lotto.util.LottoCountCalculator;
@@ -104,7 +106,8 @@ public class LottoServiceTest {
     @Test
     @DisplayName("로또 수익률을 올바르게 계산")
     void 로또_수익률_계산() {
-        List<LottoRank> lottoResult = List.of(LottoRank.FIFTH);
+        Map<LottoRank, Integer> lottoResult = new EnumMap<>(LottoRank.class);
+        lottoResult.put(LottoRank.FIFTH, 1);
         int price = 8000;
 
         assertThat(lottoService.calculateRateOfReturn(lottoResult, price)).isEqualTo(62.5f);
