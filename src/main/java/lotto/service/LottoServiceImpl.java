@@ -1,7 +1,10 @@
 package lotto.service;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lotto.constant.LottoRank;
 import lotto.domain.Lotto;
 import lotto.util.LottoCountCalculator;
@@ -47,19 +50,19 @@ public class LottoServiceImpl implements LottoService {
     }
 
     @Override
-    public List<LottoRank> matchLottos(List<Lotto> lottos, List<Integer> winningNumbers, Integer bonusNumber) {
+    public Map<LottoRank, Integer> matchLottos(List<Lotto> lottos, List<Integer> winningNumbers, Integer bonusNumber) {
         lottos.forEach(lotto -> numberValidator.validate(lotto.getNumbers()));
         numberValidator.validate(winningNumbers);
         bonusNumberValidator.validate(winningNumbers, bonusNumber);
 
-        List<LottoRank> lottoResult = new ArrayList<>();
+        List<LottoRank> lottoRanks = new ArrayList<>();
         for(Lotto lotto : lottos) {
             int matchCount = getMatchCount(lotto, winningNumbers);
             boolean matchBonus = isBonusMatched(lotto, bonusNumber);
-            addLottoRank(lottoResult, matchCount, matchBonus);
+            addLottoRank(lottoRanks, matchCount, matchBonus);
         }
 
-        return lottoResult;
+        return calculateLottoResult(lottoRanks);
     }
 
     @Override
@@ -104,5 +107,19 @@ public class LottoServiceImpl implements LottoService {
         if(matchCount == 3) {
             lottoResult.add(LottoRank.FIFTH);
         }
+    }
+
+    private Map<LottoRank, Integer> calculateLottoResult(List<LottoRank> lottoRanks) {
+        Map<LottoRank, Integer> result = new EnumMap<>(LottoRank.class);
+
+        for(LottoRank rank : LottoRank.values()) {
+            result.put(rank, 0);
+        }
+
+        for(LottoRank rank : lottoRanks) {
+            result.put(rank, result.get(rank) + 1);
+        }
+
+        return result;
     }
 }
