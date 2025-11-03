@@ -22,6 +22,7 @@ public class ConsoleInputView implements InputView {
 
     @Override
     public String getBonusNumber() {
+        System.out.println();
         System.out.println(BONUS_NUMBER_MESSAGE);
         return Console.readLine();
     }

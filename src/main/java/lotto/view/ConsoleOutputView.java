@@ -29,10 +29,12 @@ public class ConsoleOutputView implements OutputView{
     @Override
     public void printLottoNumbers(List<Lotto> lottos) {
         lottos.forEach(lotto -> System.out.println(lotto.toString()));
+        System.out.println();
     }
 
     @Override
     public void printLottoResult(Map<LottoRank, Integer> lottoResult) {
+        System.out.println();
         System.out.println(LOTTO_RESULT_MESSAGE);
         for(LottoRank rank : LOTTO_RESULT_ORDER) {
             String rankMessage = getRankMessage(rank);
