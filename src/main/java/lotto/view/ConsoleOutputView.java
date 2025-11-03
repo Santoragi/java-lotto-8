@@ -43,7 +43,7 @@ public class ConsoleOutputView implements OutputView{
     }
 
     @Override
-    public void printLottoRate(float rate) {
+    public void printLottoRate(double rate) {
         System.out.printf(LOTTO_RATE_MESSAGE, rate);
     }
 

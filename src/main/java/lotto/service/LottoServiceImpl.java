@@ -65,13 +65,13 @@ public class LottoServiceImpl implements LottoService {
     }
 
     @Override
-    public float calculateRateOfReturn(Map<LottoRank, Integer> lottoResult, int price) {
-        int totalPrize = 0;
+    public double calculateRateOfReturn(Map<LottoRank, Integer> lottoResult, int price) {
+        long totalPrize = 0;
         for(LottoRank rank : LottoRank.values()) {
-            totalPrize += lottoResult.getOrDefault(rank, 0) * rank.getPrize();
+            totalPrize += (long) lottoResult.getOrDefault(rank, 0) * rank.getPrize();
         }
 
-        float rate = ((float) totalPrize / price) * 100f;
+        double rate = ((float) totalPrize / price) * 100f;
         return Math.round(rate * 100f) / 100f;
     }
 
