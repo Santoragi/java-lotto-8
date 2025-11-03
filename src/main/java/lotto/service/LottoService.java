@@ -9,5 +9,5 @@ public interface LottoService {
 
     List<Lotto> createLottos(int price);
     Map<LottoRank, Integer> matchLottos(List<Lotto> lottos, List<Integer> winningNumbers, Integer bonusNumber);
-    float calculateRateOfReturn(List<LottoRank> lottoResult, int price);
+    float calculateRateOfReturn(Map<LottoRank, Integer> lottoResult, int price);
 }

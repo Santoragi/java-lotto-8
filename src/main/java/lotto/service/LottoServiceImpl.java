@@ -2,7 +2,6 @@ package lotto.service;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.constant.LottoRank;
@@ -66,10 +65,11 @@ public class LottoServiceImpl implements LottoService {
     }
 
     @Override
-    public float calculateRateOfReturn(List<LottoRank> lottoResult, int price) {
-        int totalPrize = lottoResult.stream()
-                .mapToInt(LottoRank::getPrize)
-                .sum();
+    public float calculateRateOfReturn(Map<LottoRank, Integer> lottoResult, int price) {
+        int totalPrize = 0;
+        for(LottoRank rank : LottoRank.values()) {
+            totalPrize += lottoResult.getOrDefault(rank, 0) * rank.getPrize();
+        }
 
         float rate = ((float) totalPrize / price) * 100f;
         return Math.round(rate * 100f) / 100f;
