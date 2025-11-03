@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.util.List;
 import lotto.domain.Lotto;
 
 public class ConsoleOutputView implements OutputView{
@@ -8,11 +9,12 @@ public class ConsoleOutputView implements OutputView{
 
     @Override
     public void printLottoCount(int count) {
+        System.out.println();
         System.out.println(count + LOTTO_COUNT_MESSAGE);
     }
 
     @Override
-    public void printLottoNumber(Lotto lotto) {
-        System.out.println(lotto.toString());
+    public void printLottoNumbers(List<Lotto> lottos) {
+        lottos.forEach(lotto -> System.out.println(lotto.toString()));
     }
 }
