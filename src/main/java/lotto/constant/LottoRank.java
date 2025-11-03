@@ -21,4 +21,12 @@ public enum LottoRank {
         return prize;
     }
 
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public boolean getMatchBonus() {
+        return matchBonus;
+    }
+
 }
