@@ -47,8 +47,8 @@ public class LottoServiceTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         Integer bonusNumber = 7;
 
-        List<LottoRank> lottoResult = List.of(LottoRank.FIRST);
-        assertThat(lottoService.matchLottos(lottos, winningNumbers, bonusNumber)).isEqualTo(lottoResult);
+        Map<LottoRank, Integer> lottoResult = lottoService.matchLottos(lottos, winningNumbers, bonusNumber);
+        assertThat(lottoResult.get(LottoRank.FIRST)).isEqualTo(1);
     }
 
     @Test
@@ -60,8 +60,8 @@ public class LottoServiceTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 45);
         Integer bonusNumber = 6;
 
-        List<LottoRank> lottoResult = List.of(LottoRank.SECOND);
-        assertThat(lottoService.matchLottos(lottos, winningNumbers, bonusNumber)).isEqualTo(lottoResult);
+        Map<LottoRank, Integer> lottoResult = lottoService.matchLottos(lottos, winningNumbers, bonusNumber);
+        assertThat(lottoResult.get(LottoRank.SECOND)).isEqualTo(1);
     }
 
     @Test
@@ -73,8 +73,8 @@ public class LottoServiceTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 45);
         Integer bonusNumber = 7;
 
-        List<LottoRank> lottoResult = List.of(LottoRank.THIRD);
-        assertThat(lottoService.matchLottos(lottos, winningNumbers, bonusNumber)).isEqualTo(lottoResult);
+        Map<LottoRank, Integer> lottoResult = lottoService.matchLottos(lottos, winningNumbers, bonusNumber);
+        assertThat(lottoResult.get(LottoRank.THIRD)).isEqualTo(1);
     }
 
     @Test
@@ -86,8 +86,8 @@ public class LottoServiceTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 44, 45);
         Integer bonusNumber = 7;
 
-        List<LottoRank> lottoResult = List.of(LottoRank.FOURTH);
-        assertThat(lottoService.matchLottos(lottos, winningNumbers, bonusNumber)).isEqualTo(lottoResult);
+        Map<LottoRank, Integer> lottoResult = lottoService.matchLottos(lottos, winningNumbers, bonusNumber);
+        assertThat(lottoResult.get(LottoRank.FOURTH)).isEqualTo(1);
     }
 
     @Test
@@ -99,8 +99,8 @@ public class LottoServiceTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 43, 44, 45);
         Integer bonusNumber = 7;
 
-        List<LottoRank> lottoResult = List.of(LottoRank.FIFTH);
-        assertThat(lottoService.matchLottos(lottos, winningNumbers, bonusNumber)).isEqualTo(lottoResult);
+        Map<LottoRank, Integer> lottoResult = lottoService.matchLottos(lottos, winningNumbers, bonusNumber);
+        assertThat(lottoResult.get(LottoRank.FIFTH)).isEqualTo(1);
     }
 
     @Test
