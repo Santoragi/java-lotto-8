@@ -27,7 +27,7 @@ public class BonusNumberValidatorTest {
 
         assertThatThrownBy(() -> bonusNumberValidator.validate(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+                .hasMessage("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class BonusNumberValidatorTest {
 
         assertThatThrownBy(() -> bonusNumberValidator.validate(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("보너스 번호는 최소 1입니다.");
+                .hasMessage("[ERROR] 보너스 번호는 최소 1입니다.");
     }
 
     @Test
@@ -51,7 +51,7 @@ public class BonusNumberValidatorTest {
 
         assertThatThrownBy(() -> bonusNumberValidator.validate(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("보너스 번호는 최대 45입니다.");
+                .hasMessage("[ERROR] 보너스 번호는 최대 45입니다.");
     }
 
     @Test

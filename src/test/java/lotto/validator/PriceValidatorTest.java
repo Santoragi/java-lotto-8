@@ -25,7 +25,7 @@ public class PriceValidatorTest {
 
         assertThatThrownBy(() -> priceValidator.validate(price))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("최소 구입 금액은 1000원입니다.");
+                .hasMessage("[ERROR] 최소 구입 금액은 1000원입니다.");
     }
 
     @Test
@@ -54,7 +54,7 @@ public class PriceValidatorTest {
 
         assertThatThrownBy(() -> priceValidator.validate(price))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("로또는 최대 10만원까지 구매 가능합니다.");
+                .hasMessage("[ERROR] 로또는 최대 10만원까지 구매 가능합니다.");
     }
 
     @Test
@@ -74,6 +74,6 @@ public class PriceValidatorTest {
 
         assertThatThrownBy(() -> priceValidator.validate(price))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("구매 금액은 로또 한 장의 가격(1000원)으로 나누어 떨어져야합니다.");
+                .hasMessage("[ERROR] 구매 금액은 로또 한 장의 가격(1000원)으로 나누어 떨어져야합니다.");
     }
 }

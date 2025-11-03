@@ -13,7 +13,7 @@ public class NumberParser {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("당첨 번호는 정수를 쉼표(,)로 구분하여 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 정수를 쉼표(,)로 구분하여 입력해야 합니다.");
         }
     }
 
@@ -21,7 +21,7 @@ public class NumberParser {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("보너스 번호는 정수로 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 정수로 입력해야 합니다.");
         }
     }
 }

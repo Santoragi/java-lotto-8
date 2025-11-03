@@ -26,7 +26,7 @@ public class NumberValidatorTest {
 
         assertThatThrownBy(() -> numberValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("로또 번호는 최소 1입니다.");
+                .hasMessage("[ERROR] 로또 번호는 최소 1입니다.");
     }
 
     @Test
@@ -37,7 +37,7 @@ public class NumberValidatorTest {
 
         assertThatThrownBy(() -> numberValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("로또 번호는 최대 45입니다.");
+                .hasMessage("[ERROR] 로또 번호는 최대 45입니다.");
     }
 
     @Test
@@ -48,7 +48,7 @@ public class NumberValidatorTest {
 
         assertThatThrownBy(() -> numberValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("로또 번호는 중복될 수 없습니다.");
+                .hasMessage("[ERROR] 로또 번호는 중복될 수 없습니다.");
     }
 
     @Test
@@ -59,7 +59,7 @@ public class NumberValidatorTest {
 
         assertThatThrownBy(() -> numberValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("당첨 번호의 개수는 6개입니다.");
+                .hasMessage("[ERROR] 당첨 번호의 개수는 6개입니다.");
     }
 
     @Test
@@ -70,7 +70,7 @@ public class NumberValidatorTest {
 
         assertThatThrownBy(() -> numberValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("당첨 번호의 개수는 6개입니다.");
+                .hasMessage("[ERROR] 당첨 번호의 개수는 6개입니다.");
     }
 
     @Test

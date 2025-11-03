@@ -7,7 +7,7 @@ public class PriceParser {
             int price = Integer.parseInt(input);
             return price;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("구입 금액은 정수로 입력해야합니다.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 정수로 입력해야합니다.");
         }
     }
 }

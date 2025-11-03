@@ -36,6 +36,6 @@ public class PriceParserTest {
 
         assertThatThrownBy(() -> priceParser.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("구입 금액은 정수로 입력해야합니다.");
+                .hasMessage("[ERROR] 구입 금액은 정수로 입력해야합니다.");
     }
 }

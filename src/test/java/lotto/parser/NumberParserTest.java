@@ -2,7 +2,6 @@ package lotto.parser;
 
 import static lotto.constant.LottoConstants.LOTTO_NUMBER_COUNT;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
@@ -40,6 +39,6 @@ public class NumberParserTest {
 
         assertThatThrownBy(() -> numberParser.parseNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("당첨 번호는 정수를 쉼표(,)로 구분하여 입력해야 합니다.");
+                .hasMessage("[ERROR] 당첨 번호는 정수를 쉼표(,)로 구분하여 입력해야 합니다.");
     }
 }
