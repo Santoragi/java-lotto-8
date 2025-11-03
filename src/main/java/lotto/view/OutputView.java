@@ -10,4 +10,5 @@ public interface OutputView {
     void printLottoCount(int count);
     void printLottoNumbers(List<Lotto> lotto);
     void printLottoResult(Map<LottoRank, Integer> lottoResult);
+    void printLottoRate(float rate);
 }

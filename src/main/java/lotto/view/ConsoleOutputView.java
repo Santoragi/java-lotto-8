@@ -18,6 +18,7 @@ public class ConsoleOutputView implements OutputView{
             LottoRank.SECOND,
             LottoRank.FIRST
     };
+    private static final String LOTTO_RATE_MESSAGE = "총 수익률은 %,.1f%%입니다.";
 
     @Override
     public void printLottoCount(int count) {
@@ -41,14 +42,20 @@ public class ConsoleOutputView implements OutputView{
         }
     }
 
+    @Override
+    public void printLottoRate(float rate) {
+        System.out.printf(LOTTO_RATE_MESSAGE, rate);
+    }
+
     private String getRankMessage(LottoRank rank) {
         String matchMessage;
         int matchCount = rank.getMatchCount();
         boolean matchBonus = rank.getMatchBonus();
+
+        matchMessage = matchCount + "개 일치";
         if (matchCount == 5 && matchBonus) {
             matchMessage = matchCount + "개 일치, 보너스 볼 일치";
         }
-        matchMessage = matchCount + "개 일치";
 
         NumberFormat nf = NumberFormat.getInstance(Locale.KOREA);
         String prizeMessage = " (" + nf.format(rank.getPrize()) + "원)";
